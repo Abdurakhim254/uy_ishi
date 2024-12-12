@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { readFile, writeFile } from '../functions';
-type user={
+export type user={
   id?:Number
   name:String,
   last_name:String,

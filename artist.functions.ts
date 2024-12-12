@@ -1,7 +1,6 @@
 const fs=require('fs')
 const path=require('path')
-const filepath=path.join(process.cwd(),'user.json')
-import {user} from "./src/app.service"
+const filepath=path.join(process.cwd(),'artist.json')
 
 export const readFile=async()=>{
     try {
@@ -12,7 +11,7 @@ export const readFile=async()=>{
     }
 }
 
-export const writeFile=async(data:user)=>{
+export const writeFile=async(data)=>{
     try {
         fs.writeFileSync(filepath,JSON.stringify(data))
         return "Ma'lumot yozildi!!"                                       
