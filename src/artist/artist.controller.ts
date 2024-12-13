@@ -2,14 +2,13 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { ArtistService } from './artist.service';
 import { CreateArtistDto } from './dto/create-artist.dto';
 import { UpdateArtistDto } from './dto/update-artist.dto';
-import {artist} from "./artist.service"
 
 @Controller('artist')
 export class ArtistController {
   constructor(private readonly artistService: ArtistService) {}
 
   @Post()
-  create(@Body() createArtistDto: artist) :Promise<string>{
+  create(@Body() createArtistDto: CreateArtistDto) :Promise<string>{
     return this.artistService.create(createArtistDto);
   }
 
@@ -24,7 +23,7 @@ export class ArtistController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateArtistDto: artist) :Promise<string>{
+  update(@Param('id') id: string, @Body() updateArtistDto: UpdateArtistDto) :Promise<string>{
     return this.artistService.update(+id, updateArtistDto);
   }
 

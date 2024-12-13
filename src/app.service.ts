@@ -1,12 +1,23 @@
 import { Injectable } from '@nestjs/common';
 import { readFile, writeFile } from '../functions';
-export type user={
-  id?:Number
+
+export type user1={
+  id?:number
   name:String,
   last_name:String,
   age:Number,
   email:String,
   password:String
+}
+
+
+export type user2={
+  name?:String,
+  last_name?:String,
+  age?:Number,
+  email?:String,
+  password?:String
+  id:Number
 }
 
 @Injectable()
@@ -20,7 +31,7 @@ export class AppService {
     return data
   }
 
-  async createData(data:user):Promise<string> {
+  async createData(data:user1):Promise<string> {
     const result=await readFile()
     const id=result.length+1
     data.id=id
@@ -28,7 +39,7 @@ export class AppService {
     return await writeFile(result)
   }
 
-  async updatedata(data:user):Promise<string>{
+  async updatedata(data:user2):Promise<string>{
     const result=await readFile()
     for(let i=0;i<result.length;i++){
       if(result[i].id==data.id){

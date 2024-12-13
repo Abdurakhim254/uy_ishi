@@ -1,5 +1,7 @@
 import { Controller, Delete, Get, Param, Post,Body, Put } from '@nestjs/common';
 import { AppService } from './app.service';
+import { CreateUSerDto } from './dto/create-user.dto';
+import { UpdateUserDto } from './dto/update-user.dto';
 
 @Controller('user')
 export class AppController {
@@ -15,12 +17,12 @@ export class AppController {
   }
   
   @Post()
-  getPost(@Body() data: any): any {
+  getPost(@Body() data: CreateUSerDto): any {
     return this.appService.createData(data)
   }
 
   @Put(':id')
-  getPut(@Body() data:any,@Param('id') id :string):any{
+  getPut(@Body() data:UpdateUserDto,@Param('id') id :number):any{
     data.id=id
     console.log(data)
     return this.appService.updatedata(data)

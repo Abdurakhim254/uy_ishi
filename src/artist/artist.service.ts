@@ -3,15 +3,21 @@ import { CreateArtistDto } from './dto/create-artist.dto';
 import { UpdateArtistDto } from './dto/update-artist.dto';
 import { readFile, writeFile } from '../../artist.functions';
 
-export type artist={
+export type artist1={
   id?:Number
   name:String,
   grammy:boolean
 }
 
+export type artist2={
+  id?:Number
+  name?:String,
+  grammy?:boolean
+}
+
 @Injectable()
 export class ArtistService {
-  async create(createArtistDto: artist):Promise<string> {
+  async create(createArtistDto: artist1):Promise<string> {
     const result=await readFile()
     const id=result.length+1
     createArtistDto.id=id
@@ -29,7 +35,7 @@ export class ArtistService {
     return data
   }
 
-  async update(id: number, updateArtistDto: artist) :Promise<string>{
+  async update(id: number, updateArtistDto: artist2) :Promise<string>{
     const result=await readFile()
     for(let i=0;i<result.length;i++){
       if(result[i].id==id){
