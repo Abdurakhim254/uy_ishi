@@ -9,11 +9,7 @@ export type artist1={
   grammy:boolean
 }
 
-export type artist2={
-  id?:Number
-  name?:String,
-  grammy?:boolean
-}
+export type artist2=Partial<artist1>
 
 @Injectable()
 export class ArtistService {
